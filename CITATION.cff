@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it and retain the MIT notice."
+type: software
+title: AI workflow cost ledger
+authors:
+  - family-names: Samadi
+    given-names: Ahmadreza
+version: 0.1.0
+date-released: 2026-10-15
+license: MIT
+repository-code: https://github.com/ahmadreza-smdi/ai-workflow-cost
+url: https://a-samadi.com/writing/ai-cost-per-verified-result.html
