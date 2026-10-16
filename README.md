@@ -15,7 +15,21 @@ python3 -B -m unittest discover -s tests -v
 
 The invented fixture has **3 attempts across 2 results, 1 accepted result and 0.85 total cost** in the selected currency label. The cost per accepted result is 0.85. These are teaching numbers, not Appraiva measurements, customer results or a model benchmark.
 
-## Prepare your ledger
+## Plan a manual-versus-AI experiment without Python
+
+[Download the AI workflow experiment workbook](https://github.com/ahmadreza-smdi/ai-workflow-cost/releases/download/v0.1.1/AI-Workflow-Experiment.xlsx) or open its [versioned source file](examples/AI-Workflow-Experiment.xlsx).
+
+This companion adds a paired-results worksheet and a full attempt ledger. Define one task, batch, period, currency and acceptance rule, then record each workflow's final outcome for each result. Include every retry and failed attempt. Editable labor minutes and hourly rates produce labor costs; model, tool and other non-labor costs are separate inputs. Do not enter the same labor cost again under other costs.
+
+The three sheets are `Compare`, `Results` and `Attempts`. Amber cells are inputs; white numeric cells contain formulas. The template holds **10 paired results and 30 attempts**. Replace all fictional rows for a real experiment and stay within the labelled ranges. Save a local copy rather than adding private records to the public repository.
+
+The worked example is entirely fictional. Manual review costs 24 currency units for three accepted results, or 8 each. The AI workflow costs 18.40 for two accepted results and one rejected result, or 9.20 per accepted result. The AI batch is cheaper in total but has fewer accepted results. These are arithmetic teaching examples, not measured productivity, company performance or a recommendation to choose either workflow.
+
+Read accepted share and pending outcomes beside cost. Labor effort and elapsed time have separate fields. The sum of per-result elapsed times is **not** calendar duration for a parallel batch. Results marked pending have unknown final elapsed time. Missing costs, invalid numbers, unmatched IDs and duplicate result/attempt IDs make dependent totals unavailable. Explicit zero stays zero; zero accepted results give undefined unit cost (`n.a.`). "Recorded batch complete" checks recorded inputs only; it does not certify experimental fairness or output correctness.
+
+Workbook formulas passed 20 synthetic calculation/input-change checks, and the three sheets were visually reviewed. Exported formula definitions and cached values were inspected. Excel desktop and Google Sheets native recalculation were not tested. The workbook has no macros or external-workbook links. It is developed with AI assistance and covered by this repository's MIT licence. The CLI interface is unchanged in v0.1.1.
+
+## Prepare your CLI ledger
 
 One row per attempt, in execution order within each result. Exact unique headers, in any order:
 
