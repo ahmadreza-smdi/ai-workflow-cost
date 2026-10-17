@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 SCRIPT = Path(__file__).resolve().parents[1] / 'workflow_cost.py'
 HEADER = 'result_id,attempt_id,outcome,model_cost,tool_cost,review_cost,other_cost\n'
@@ -20,6 +21,47 @@ class LedgerBehavior(unittest.TestCase):
             result = subprocess.run([sys.executable, '-B', str(SCRIPT), str(path), '--task', 'Fictional review', '--criterion', 'Fictional criterion', '--currency', 'USD', *extra], capture_output=True, text=True)
             self.assertEqual(before, hashlib.sha256(path.read_bytes()).hexdigest())
             return result
+
+    def test_csv_syntax_error_names_physical_line_and_logical_record(self):
+        data = HEADER + GOOD + '\n\n"unfinished\nidentifier'
+        r = self.call(data)
+        self.assertEqual(r.returncode, 2)
+        self.assertEqual(r.stdout, '')
+        self.assertIn('CSV line 8 (record 4; detected here)', r.stderr)
+        self.assertIn('unexpected end of data', r.stderr)
+
+    def test_csv_header_syntax_error_names_detection_line(self):
+        r = self.call('"result_id\nattempt_id')
+        self.assertEqual(r.returncode, 2)
+        self.assertEqual(r.stdout, '')
+        self.assertIn('CSV line 2 (header; detected here)', r.stderr)
+
+    def test_invalid_character_after_quote_names_record(self):
+        r = self.call(HEADER + '\n"A"x,1,accepted,0,0,0,0\n')
+        self.assertEqual(r.returncode, 2)
+        self.assertEqual(r.stdout, '')
+        self.assertIn('CSV line 3 (record 1; detected here)', r.stderr)
+
+    def test_blank_lines_and_multiline_identifiers_keep_exact_report(self):
+        plain = self.call(HEADER + 'A,1,accepted,1,0,0,0\n')
+        multiline = self.call(HEADER + '\n"A\nB",1,accepted,1,0,0,0\n\n')
+        self.assertEqual(multiline.returncode, 0, multiline.stderr)
+        self.assertEqual(multiline.stdout, plain.stdout)
+
+    def test_reordered_header_and_crlf_keep_exact_report(self):
+        original = self.call(HEADER + GOOD)
+        rows = [line.split(',') for line in (HEADER + GOOD).splitlines()]
+        reordered = '\ufeff' + '\r\n'.join(','.join(reversed(row)) for row in rows) + '\r\n'
+        actual = self.call(reordered)
+        self.assertEqual(actual.returncode, 0, actual.stderr)
+        self.assertEqual(actual.stdout, original.stdout)
+
+    def test_worked_download_members_match_current_sources(self):
+        root = SCRIPT.parent
+        with zipfile.ZipFile(root / 'examples/AI-Cost-Worked-Examples.zip') as archive:
+            self.assertIsNone(archive.testzip())
+            for name in archive.namelist():
+                self.assertEqual(archive.read(name), (root / 'examples/worked-cases' / name).read_bytes(), name)
 
     def test_retry_and_failed_costs_count_once_per_result(self):
         r = self.call(HEADER + GOOD)

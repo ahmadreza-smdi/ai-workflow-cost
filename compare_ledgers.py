@@ -25,7 +25,10 @@ def compare(left, right, task, criterion, currency, left_label='Manual', right_l
         for index, data in enumerate(snapshots):
             snapshot = Path(folder) / f'{index}.csv'
             snapshot.write_bytes(data)
-            reports.append(summarize(snapshot, task, criterion, currency))
+            try:
+                reports.append(summarize(snapshot, task, criterion, currency))
+            except (ValueError, UnicodeError, csv.Error) as error:
+                raise ValueError(f'{labels[index]!r} ledger: {error}') from error
             rows = csv.DictReader(io.StringIO(data.decode('utf-8-sig'), newline=''), strict=True)
             populations.append({row['result_id'].strip() for row in rows})
     if populations[0] != populations[1]:

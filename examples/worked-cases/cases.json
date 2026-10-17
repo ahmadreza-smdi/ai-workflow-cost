@@ -1,8 +1,8 @@
 {
   "source": {
     "repository": "https://github.com/ahmadreza-smdi/ai-workflow-cost",
-    "base_commit": "f626bf9ef567a83ac246260e87b4a861b7825220",
-    "workflow_cost_sha256": "b75d27bb5f13f35e8b14d56f98df59a04cfffb9715bf63c9d64913fdd9ec2d61",
+    "base_commit": "092bd6fa3d285a67f4dcc1201e5b0f4be099e831",
+    "workflow_cost_sha256": "5c980fab86cc26e0a532d731e12f597f64ad531bb3e1c9709ec9ce20eff15b26",
     "ai_assistance": true,
     "fictional_only": true,
     "companion_version": "0.1.2"

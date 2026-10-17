@@ -26,6 +26,26 @@ class Comparison(unittest.TestCase):
             self.assertEqual(before, [hashlib.sha256(p.read_bytes()).hexdigest() for p in paths])
             return result
 
+    def test_syntax_error_identifies_left_or_right_ledger_and_line(self):
+        malformed = HEADER + '\n"unfinished\nidentifier'
+        for side, label in [('left', 'Manual'), ('right', 'AI')]:
+            with self.subTest(side=side):
+                result = self.run_pair(**{side: malformed})
+                self.assertEqual((result.returncode, result.stdout), (2, ''))
+                self.assertIn(f"{label!r} ledger: CSV line 4 (record 1; detected here)", result.stderr)
+                self.assertNotIn('workflow-cost-compare-', result.stderr)
+
+    def test_semantic_error_uses_custom_workflow_label(self):
+        result = self.run_pair(right=AI.replace('1.4,0,5,0', ',0,5,0'),
+                               extra=('--right-label', 'Reviewed assistant'))
+        self.assertEqual((result.returncode, result.stdout), (2, ''))
+        self.assertIn("'Reviewed assistant' ledger: Record 2: model_cost", result.stderr)
+
+    def test_missing_metadata_does_not_produce_partial_comparison(self):
+        result = self.run_pair(extra=('--criterion', ' '))
+        self.assertEqual((result.returncode, result.stdout), (2, ''))
+        self.assertIn('acceptance criterion', result.stderr)
+
     def test_lower_total_can_have_higher_unit_cost(self):
         result = self.run_pair()
         self.assertEqual(result.returncode, 0, result.stderr)

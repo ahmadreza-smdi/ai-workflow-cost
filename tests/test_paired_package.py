@@ -39,7 +39,7 @@ class PairedPackage(unittest.TestCase):
             checks = subprocess.run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', 'tests', '-v'],
                                     cwd=folder, capture_output=True, text=True)
             self.assertEqual(checks.returncode, 0, checks.stderr)
-            self.assertIn('Ran 8 tests', checks.stderr)
+            self.assertIn('Ran 11 tests', checks.stderr)
 
     def test_rebuild_logical_contents_match_and_crlf_normalization_is_bounded(self):
         rebuilt, _ = builder.payload()

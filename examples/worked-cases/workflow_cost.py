@@ -12,6 +12,31 @@ FIELDS = ('result_id', 'attempt_id', 'outcome') + COSTS
 AMOUNT = re.compile(r'(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?\Z', re.ASCII)
 
 
+def _csv_records(stream):
+    """Keep DictReader semantics; locate syntax failures by physical input line."""
+    physical_line = 0
+    completed_records = 0
+
+    def counted_lines():
+        nonlocal physical_line
+        for line in stream:
+            physical_line += 1
+            yield line
+
+    rows = csv.DictReader(counted_lines(), strict=True)
+    location = 'header'
+    try:
+        if rows.fieldnames is None or len(rows.fieldnames) != len(FIELDS) or set(rows.fieldnames) != set(FIELDS):
+            raise ValueError('CSV requires exactly these unique columns: ' + ','.join(FIELDS))
+        location = 'record 1'
+        for row in rows:
+            completed_records += 1
+            yield completed_records, row
+            location = f'record {completed_records + 1}'
+    except csv.Error as error:
+        raise csv.Error(f'CSV line {physical_line} ({location}; detected here): {error}') from error
+
+
 def summarize(path, task, criterion, currency):
     if not task.strip() or not criterion.strip():
         raise ValueError('Task and acceptance criterion must be explicit and nonempty')
@@ -25,10 +50,7 @@ def summarize(path, task, criterion, currency):
     with localcontext() as context:
         context.prec = 40
         with Path(path).open(newline='', encoding='utf-8-sig') as stream:
-            rows = csv.DictReader(stream, strict=True)
-            if rows.fieldnames is None or len(rows.fieldnames) != len(FIELDS) or set(rows.fieldnames) != set(FIELDS):
-                raise ValueError('CSV requires exactly these unique columns: ' + ','.join(FIELDS))
-            for index, row in enumerate(rows, 1):
+            for index, row in _csv_records(stream):
                 if index > 100000:
                     raise ValueError('Maximum supported ledger size is 100000 attempts')
                 if None in row or any(value is None for value in row.values()):
