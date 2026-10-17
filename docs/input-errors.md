@@ -2,6 +2,30 @@
 
 An input error means the CLI could not produce a summary under its input rules. It does not mean the workflow failed, cost nothing or produced no accepted results. Keep your original records and work on a copy.
 
+## The CSV has broken quoting
+
+The current-source CLI identifies the physical line where a CSV syntax error was detected and the logical record being read (or `header`). For example, this **fictional invalid file** has an unclosed quote:
+
+```csv
+result_id,attempt_id,outcome,model_cost,tool_cost,review_cost,other_cost
+A,1,accepted,0,0,0,0
+
+"unfinished
+identifier
+```
+
+It exits with code `2`, writes no JSON report, and reports:
+
+```text
+Input error: CSV line 5 (record 2; detected here): unexpected end of data
+```
+
+Physical lines include the header, blank lines and newlines inside quoted fields. Records count parsed nonblank data rows. The detection line is not necessarily where the bad quote began: inspect the preceding record and opening quote too. Properly quoted identifiers may contain commas or newlines; do not remove valid data just to eliminate an error.
+
+Work on a copy and reconcile the CSV export with its source. Restore missing quoting or export it again using a CSV-aware application. A repaired file still needs complete costs, unique attempt pairs and supported outcome labels.
+
+In a two-ledger comparison, the error also identifies the workflow label, for example `'AI' ledger: CSV line 5 ...`. Custom `--left-label` and `--right-label` values identify those workflows. This does not select a winning workflow or validate the records. Older tagged downloads may show less detailed errors; this description applies to the source version containing the diagnostic update.
+
 ## A required cost is blank
 
 The four required cost columns are `model_cost`, `tool_cost`, `review_cost` and `other_cost`. A blank value is unknown; the CLI does not substitute zero.
