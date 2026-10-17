@@ -26,6 +26,16 @@ Work on a copy and reconcile the CSV export with its source. Restore missing quo
 
 In a two-ledger comparison, the error also identifies the workflow label, for example `'AI' ledger: CSV line 5 ...`. Custom `--left-label` and `--right-label` values identify those workflows. This does not select a winning workflow or validate the records. Older tagged downloads may show less detailed errors; this description applies to the source version containing the diagnostic update.
 
+## The file is not UTF-8 CSV
+
+If `Input error` mentions the UTF-8 codec, the file could not be decoded under this CLI's UTF-8 input contract. It has not produced a cost report. This does not mean zero cost or no accepted results. Renaming the file to `.csv` does not convert its encoding.
+
+Three fictional checks covered an invalid UTF-8 byte, a UTF-16 export, and an invalid right-hand ledger in a comparison. Each exited with code `2`, wrote no JSON report and preserved the input files. The comparison error identified the `AI` ledger. These are bounded examples, not a guarantee for every malformed file.
+
+Keep the original export. In a CSV-aware application that supports the file's actual encoding, make a separate UTF-8 CSV export. Reconcile result IDs, attempt IDs, outcome labels and all four cost columns with the original records before calculating again.
+
+Do not guess an encoding, delete non-ASCII characters or use a conversion that silently ignores invalid bytes. A changed identifier can change how attempts are grouped. After decoding succeeds, all existing ledger checks still apply: a known zero differs from an unknown cost, and acceptance remains the caller's recorded label.
+
 ## A required cost is blank
 
 The four required cost columns are `model_cost`, `tool_cost`, `review_cost` and `other_cost`. A blank value is unknown; the CLI does not substitute zero.
