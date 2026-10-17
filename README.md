@@ -82,7 +82,7 @@ For private use, replace the two CSV paths and experiment labels; optionally set
 
 The caller must use the same actual task, period, population, acceptance rule, currency and cost allocation. Shared IDs alone do not establish those facts. Mismatched IDs or either invalid ledger cause exit 2 with no partial report. Unknown costs remain errors; no accepted results remains `null`, distinct from explicit zero unit cost. Pending is not a CLI outcome: reconcile the same documented cutoff for both workflows instead of silently dropping unmatched results. Keep private records and reports out of the public repository.
 
-Prefer a download? [Get the offline paired-ledger kit](examples/AI-Cost-Paired-Ledgers.zip), extract the entire ZIP and open `index.html`. It contains the two existing CLIs, two fictional CSVs, eight comparison checks and the MIT licence. Python 3.10 or newer must already be available. This is a main-branch companion, separate from the v0.1.2 worked-example ZIP; it is not a new tagged release.
+Prefer a download? [Get the offline paired-ledger kit](examples/AI-Cost-Paired-Ledgers.zip), extract the entire ZIP and open `index.html`. It contains the two existing CLIs, two fictional CSVs, 11 comparison checks and the MIT licence. Python 3.10 or newer must already be available. This is a main-branch companion, separate from the v0.1.2 worked-example ZIP; it is not a new tagged release.
 
 Maintainers can rebuild this kit with `python3 -B examples/paired-ledgers/build_package.py`. Its seven allowlisted text files use UTF-8 and LF line endings. Tests compare logical file contents rather than requiring identical compression bytes across systems.
 

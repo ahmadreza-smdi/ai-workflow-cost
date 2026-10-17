@@ -1,6 +1,7 @@
 import importlib.util
 import io
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -24,7 +25,7 @@ class PairedPackage(unittest.TestCase):
             for name, source in builder.FILES.items():
                 self.assertEqual(archive.read(name), builder.normalized((ROOT / source).read_bytes()), name)
 
-    def test_fresh_extraction_demo_and_eight_packaged_checks(self):
+    def test_fresh_extraction_demo_and_documented_packaged_checks(self):
         with tempfile.TemporaryDirectory() as folder:
             with zipfile.ZipFile(ARCHIVE) as archive:
                 self.assertEqual(set(archive.namelist()), set(builder.FILES))
@@ -39,7 +40,11 @@ class PairedPackage(unittest.TestCase):
             checks = subprocess.run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', 'tests', '-v'],
                                     cwd=folder, capture_output=True, text=True)
             self.assertEqual(checks.returncode, 0, checks.stderr)
-            self.assertIn('Ran 11 tests', checks.stderr)
+            guide = (Path(folder) / 'index.html').read_text(encoding='utf-8')
+            count = int(re.search(r'The (\d+) included checks', guide).group(1))
+            readme = (ROOT / 'README.md').read_text(encoding='utf-8')
+            self.assertEqual(int(re.search(r'(\d+) comparison checks', readme).group(1)), count)
+            self.assertIn(f'Ran {count} tests', checks.stderr)
 
     def test_rebuild_logical_contents_match_and_crlf_normalization_is_bounded(self):
         rebuilt, _ = builder.payload()
