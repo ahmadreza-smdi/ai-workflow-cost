@@ -1,0 +1,51 @@
+AI WORKFLOW EXPERIMENT NOTES — BLANK STARTER
+Ahmadreza Samadi | https://a-samadi.com/about.html
+For the offline AI workflow cost ledger. No example measurements are included.
+Keep the completed notes and CSV private. Use local result IDs instead of personal
+or confidential descriptions. Original blank template: repository MIT licence.
+
+DEFINE BEFORE RECORDING
+Task and decision this experiment will inform:
+Workflow name (use a separate CSV for each workflow):
+Batch / population and inclusion rule:
+Period and observation cutoff:
+Currency label (one label per run; no conversion is performed):
+Acceptance criterion (what evidence makes a result acceptable?):
+How acceptance will be checked, consistently across workflows:
+How pending outcomes will be resolved or excluded at the cutoff:
+
+DOCUMENT COST ALLOCATION
+Model costs — source and allocation basis:
+Tool costs — source and allocation basis:
+Review costs — measured time, stated rate and time unit:
+Other costs — included categories and allocation basis:
+How shared charges are allocated without double counting:
+Known excluded costs and reason:
+Unknown costs / unresolved inputs (resolve before final calculation):
+
+RECORD AND RUN
+1. Copy attempt-ledger.csv to your working folder. It has a header only.
+2. Add one row per actual attempt. Use a stable result_id for retries and a unique
+   attempt_id within each result. Keep execution order within each result.
+3. outcome must be accepted, rejected or error. An accepted attempt closes that
+   result; do not add later attempts for it. Pending is not a CLI outcome.
+4. Fill all four cost columns with nonnegative plain decimal amounts. Explicit
+   zero means known zero. A blank cost means unknown and is rejected.
+5. Include rejected and error attempts, not only accepted ones. Read the full
+   README field limits before importing data. Do not copy fictional sample rows
+   into a real experiment.
+6. Run the README command on your private file. The CLI totals caller-recorded
+   costs and labels; it does not check the truth of the acceptance judgement.
+
+INTERPRET TOGETHER
+Attempts recorded:
+Distinct results attempted:
+Accepted results:
+Total recorded cost and currency label:
+Cost per accepted result (undefined when none is accepted):
+Quality checks, omissions and uncertainty beside the cost figure:
+Decision taken, if any, and limitations:
+
+A lower total bill alone does not establish better quality, ROI or a better model.
+This template is educational. It contains no company or customer measurements.
+Developed with AI assistance. No automatic uploads or external connections.

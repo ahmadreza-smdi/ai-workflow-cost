@@ -41,6 +41,20 @@ The three fictional cases distinguish failed/retried attempt costs, zero accepte
 
 These separate fixtures are arithmetic examples, not a controlled comparison of workflows, models or company performance. The package includes the unchanged CLI, three CSVs, expected summaries, the walkthrough, a replay script and MIT licence. Python 3.10 or newer; no dependencies, account or network required. v0.1.2 adds documentation and examples; the CLI and existing workbook are unchanged.
 
+## Start with your own records
+
+Copy [the blank CSV header](templates/attempt-ledger.csv) to a private working folder and complete [the experiment notes](templates/experiment-notes.txt) before recording attempts. The CSV contains no sample rows or default costs. An empty file is intentionally rejected; it is not a zero-cost experiment.
+
+Add one row for every attempt using the field rules below. Keep the same result ID across retries, record all known cost categories and enter zero only when it is known to be zero. Resolve unknown costs and pending decisions under your documented cutoff before a final run. Do not overwrite the fictional fixtures or commit private records to this repository.
+
+Run from this repository folder after filling the CSV. Replace both quoted labels and the currency label with your own experiment definitions:
+
+```sh
+python3 workflow_cost.py /path/to/private/attempt-ledger.csv --task "Your task and batch" --criterion "Your explicit acceptance criterion" --currency USD
+```
+
+For comparisons, use a separate ledger per workflow with the same population, period, currency, acceptance rule and cost allocation. The notes help document choices; neither they nor the CLI certify a fair comparison, a correct result or complete cost recording. If you prefer a spreadsheet, use the workbook above and replace its fictional rows instead.
+
 ## Prepare your CLI ledger
 
 One row per attempt, in execution order within each result. Exact unique headers, in any order:
