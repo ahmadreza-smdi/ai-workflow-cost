@@ -1,0 +1,51 @@
+{
+  "source": {
+    "repository": "https://github.com/ahmadreza-smdi/ai-workflow-cost",
+    "base_commit": "f626bf9ef567a83ac246260e87b4a861b7825220",
+    "workflow_cost_sha256": "b75d27bb5f13f35e8b14d56f98df59a04cfffb9715bf63c9d64913fdd9ec2d61",
+    "ai_assistance": true,
+    "fictional_only": true,
+    "companion_version": "0.1.2"
+  },
+  "cases": [
+    {
+      "id": "01-retries",
+      "title": "Failed attempts still belong in the numerator",
+      "rows": "A,1,error,0.10,0.05,0,0\nA,2,accepted,0.10,0,0.25,0\nB,1,rejected,0.10,0,0.50,0\nC,1,accepted,0.20,0,0.30,0\n",
+      "expected": {
+        "attempts": 4,
+        "results_attempted": 3,
+        "accepted_results": 2,
+        "total_cost": "1.60",
+        "cost_per_accepted_result": "0.800000000"
+      },
+      "explanation": "Four attempts cost 1.60 USD across three intended results. Only A and C are accepted. Include A\u2019s failed first attempt and B\u2019s rejected output: 1.60 / 2 = 0.80 USD per accepted result. Accepted share is two out of three intended results; it is not three out of four attempts."
+    },
+    {
+      "id": "02-none-accepted",
+      "title": "No accepted results means undefined unit cost",
+      "rows": "A,1,error,0.20,0,0.30,0\nB,1,rejected,0.10,0,0.40,0\n",
+      "expected": {
+        "attempts": 2,
+        "results_attempted": 2,
+        "accepted_results": 0,
+        "total_cost": "1.00",
+        "cost_per_accepted_result": null
+      },
+      "explanation": "Two unsuccessful attempts still cost 1.00 USD. The denominator is zero, so the tool returns null for unit cost and its exact fraction. Null does not mean the experiment was free."
+    },
+    {
+      "id": "03-known-zero",
+      "title": "Explicitly known zero costs can produce zero unit cost",
+      "rows": "A,1,accepted,0,0,0,0\nB,1,error,0,0,0,0\n",
+      "expected": {
+        "attempts": 2,
+        "results_attempted": 2,
+        "accepted_results": 1,
+        "total_cost": "0",
+        "cost_per_accepted_result": "0.000000000"
+      },
+      "explanation": "One accepted result and one failed attempt have explicitly recorded zero in every cost category. Total cost and unit cost are zero. This fictional case assumes all included costs are known to be zero; a free model call alone does not establish zero review, tool or other cost. A missing cost must not be replaced with zero."
+    }
+  ]
+}

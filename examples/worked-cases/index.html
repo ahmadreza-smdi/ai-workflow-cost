@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Three worked AI cost examples — Ahmadreza Samadi</title><style>body{font:18px/1.7 system-ui;background:#edf8f5;color:#16353b;max-width:860px;margin:35px auto;padding:20px}section{background:white;border-radius:16px;padding:22px;margin:22px 0}pre{overflow:auto;background:#f1f5f7;padding:12px;font-size:14px}a{overflow-wrap:anywhere}code{overflow-wrap:anywhere}</style><h1>Three worked AI cost examples</h1><p>By <a href="https://a-samadi.com/about.html">Ahmadreza Samadi</a> · Start with the decision.</p><p>All examples are fictional and AI-assisted. These are arithmetic teaching cases, not company measurements, customer results or a model recommendation. Educational, not financial advice.</p><p>Use the original offline CLI included in this package. Python3.10 or newer; no packages, account, API key or network access required. Open a terminal in this folder and run:</p><pre>python3 -B verify_examples.py</pre><p>Use <code>python</code> instead of <code>python3</code> where appropriate. Verification reads the supplied fixtures and reports to the terminal. The original CLI code is unchanged.</p>
+<section><h2>Failed attempts still belong in the numerator</h2><p>Four attempts cost 1.60 USD across three intended results. Only A and C are accepted. Include A’s failed first attempt and B’s rejected output: 1.60 / 2 = 0.80 USD per accepted result. Accepted share is two out of three intended results; it is not three out of four attempts.</p><p><a download href="01-retries.csv">Download fictional CSV</a></p><pre>result_id,attempt_id,outcome,model_cost,tool_cost,review_cost,other_cost
+A,1,error,0.10,0.05,0,0
+A,2,accepted,0.10,0,0.25,0
+B,1,rejected,0.10,0,0.50,0
+C,1,accepted,0.20,0,0.30,0
+</pre><p>Run this case:</p><pre>python3 workflow_cost.py 01-retries.csv --task "Fictional evidence review" --criterion "Fictional reviewer accepts identity and dated source evidence" --currency USD</pre><p>Expected summary:</p><pre>{
+  &quot;attempts&quot;: 4,
+  &quot;results_attempted&quot;: 3,
+  &quot;accepted_results&quot;: 2,
+  &quot;total_cost&quot;: &quot;1.60&quot;,
+  &quot;cost_per_accepted_result&quot;: &quot;0.800000000&quot;
+}</pre></section>
+<section><h2>No accepted results means undefined unit cost</h2><p>Two unsuccessful attempts still cost 1.00 USD. The denominator is zero, so the tool returns null for unit cost and its exact fraction. Null does not mean the experiment was free.</p><p><a download href="02-none-accepted.csv">Download fictional CSV</a></p><pre>result_id,attempt_id,outcome,model_cost,tool_cost,review_cost,other_cost
+A,1,error,0.20,0,0.30,0
+B,1,rejected,0.10,0,0.40,0
+</pre><p>Run this case:</p><pre>python3 workflow_cost.py 02-none-accepted.csv --task "Fictional evidence review" --criterion "Fictional reviewer accepts identity and dated source evidence" --currency USD</pre><p>Expected summary:</p><pre>{
+  &quot;attempts&quot;: 2,
+  &quot;results_attempted&quot;: 2,
+  &quot;accepted_results&quot;: 0,
+  &quot;total_cost&quot;: &quot;1.00&quot;,
+  &quot;cost_per_accepted_result&quot;: null
+}</pre></section>
+<section><h2>Explicitly known zero costs can produce zero unit cost</h2><p>One accepted result and one failed attempt have explicitly recorded zero in every cost category. Total cost and unit cost are zero. This fictional case assumes all included costs are known to be zero; a free model call alone does not establish zero review, tool or other cost. A missing cost must not be replaced with zero.</p><p><a download href="03-known-zero.csv">Download fictional CSV</a></p><pre>result_id,attempt_id,outcome,model_cost,tool_cost,review_cost,other_cost
+A,1,accepted,0,0,0,0
+B,1,error,0,0,0,0
+</pre><p>Run this case:</p><pre>python3 workflow_cost.py 03-known-zero.csv --task "Fictional evidence review" --criterion "Fictional reviewer accepts identity and dated source evidence" --currency USD</pre><p>Expected summary:</p><pre>{
+  &quot;attempts&quot;: 2,
+  &quot;results_attempted&quot;: 2,
+  &quot;accepted_results&quot;: 1,
+  &quot;total_cost&quot;: &quot;0&quot;,
+  &quot;cost_per_accepted_result&quot;: &quot;0.000000000&quot;
+}</pre></section>
+<h2>Use with your own records</h2><p>Define one task, period, intended-result population, acceptance rule and currency label before collecting attempts. Keep rejected and failed attempts. Record every included cost category explicitly; price review effort using your own stated time/rate basis. Acceptance is your label, not independent certification. The tool cannot establish whether your records are complete or whether a workflow is better.</p><p>These three different fixtures are not a controlled comparison between models or workflows. Do not interpret their different unit costs as productivity or ROI evidence. Pending decisions need a documented cutoff; arbitrary exclusion can bias results.</p><p>Use copies for private records. Do not upload sensitive ledgers to a public repository.</p><p><a href="https://github.com/ahmadreza-smdi/ai-workflow-cost/releases/tag/v0.1.1">Published tool and workbook</a> · <a href="https://a-samadi.com/writing/ai-cost-per-verified-result.html">Method and limits</a> · <a href="LICENSE">MIT licence for this package</a></p><p>Example companion version 0.1.2. All datasets are fictional; the bundled CLI is unchanged from the original tool.</p></html>

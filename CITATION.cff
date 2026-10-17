@@ -5,7 +5,7 @@ title: AI workflow cost ledger
 authors:
   - family-names: Samadi
     given-names: Ahmadreza
-version: 0.1.1
+version: 0.1.2
 date-released: 2026-10-17
 license: MIT
 repository-code: https://github.com/ahmadreza-smdi/ai-workflow-cost

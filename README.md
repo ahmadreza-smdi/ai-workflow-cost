@@ -29,6 +29,18 @@ Read accepted share and pending outcomes beside cost. Labor effort and elapsed t
 
 Workbook formulas passed 20 synthetic calculation/input-change checks, and the three sheets were visually reviewed. Exported formula definitions and cached values were inspected. Excel desktop and Google Sheets native recalculation were not tested. The workbook has no macros or external-workbook links. It is developed with AI assistance and covered by this repository's MIT licence. The CLI interface is unchanged in v0.1.1.
 
+## Work through three counting cases
+
+[Download the standalone worked-example ZIP](https://github.com/ahmadreza-smdi/ai-workflow-cost/releases/download/v0.1.2/AI-Cost-Worked-Examples.zip), or browse the [example source folder](examples/worked-cases/). Unzip it, open `index.html` for the walkthrough and run this command from that folder:
+
+```sh
+python3 -B verify_examples.py
+```
+
+The three fictional cases distinguish failed/retried attempt costs, zero accepted results and explicitly known zero costs. Four attempts costing 1.60 currency units with two accepted results give 0.80 per accepted result. Spending 1.00 with none accepted gives an undefined unit cost (`null`), while zero recorded cost with one accepted result gives zero. A missing-cost negative control is rejected rather than treated as zero.
+
+These separate fixtures are arithmetic examples, not a controlled comparison of workflows, models or company performance. The package includes the unchanged CLI, three CSVs, expected summaries, the walkthrough, a replay script and MIT licence. Python 3.10 or newer; no dependencies, account or network required. v0.1.2 adds documentation and examples; the CLI and existing workbook are unchanged.
+
 ## Prepare your CLI ledger
 
 One row per attempt, in execution order within each result. Exact unique headers, in any order:
