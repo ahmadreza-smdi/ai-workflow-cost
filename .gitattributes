@@ -1,2 +1,10 @@
 workflow_cost.py text eol=lf
 examples/worked-cases/workflow_cost.py text eol=lf
+# Keep the exact downloadable text members stable on Windows checkouts.
+examples/worked-cases/01-retries.csv text eol=lf
+examples/worked-cases/02-none-accepted.csv text eol=lf
+examples/worked-cases/03-known-zero.csv text eol=lf
+examples/worked-cases/LICENSE text eol=lf
+examples/worked-cases/cases.json text eol=lf
+examples/worked-cases/index.html text eol=lf
+examples/worked-cases/verify_examples.py text eol=lf
