@@ -1,0 +1,21 @@
+{
+  "@context": "https://w3id.org/codemeta/4.0",
+  "@type": "SoftwareSourceCode",
+  "name": "AI workflow cost ledger",
+  "description": "Offline, dependency-free Python CLI for totaling attempt costs and calculating cost per distinct caller-accepted result, including retries and failed attempts. Developed with AI assistance; examples are fictional.",
+  "codeRepository": "https://github.com/ahmadreza-smdi/ai-workflow-cost",
+  "url": "https://a-samadi.com/writing/ai-cost-per-verified-result.html",
+  "author": {
+    "@id": "https://a-samadi.com/#person",
+    "@type": "Person",
+    "name": "Ahmadreza Samadi",
+    "givenName": "Ahmadreza",
+    "familyName": "Samadi",
+    "url": "https://a-samadi.com/about.html"
+  },
+  "license": "https://spdx.org/licenses/MIT",
+  "programmingLanguage": "Python",
+  "runtimePlatform": "Python 3.10 or newer",
+  "readme": "https://github.com/ahmadreza-smdi/ai-workflow-cost/blob/main/README.md",
+  "issueTracker": "https://github.com/ahmadreza-smdi/ai-workflow-cost/issues"
+}

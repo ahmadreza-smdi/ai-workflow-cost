@@ -119,3 +119,7 @@ Amounts are decimal strings, not binary floats. Displayed unit cost rounds half 
 Acceptance is a caller-supplied label, not independent verification. This tool does not calculate precision, recall, time to decision, completeness of your cost allocation or product usefulness. Read those measures alongside cost. It cannot establish return on investment, actual property value, a company outcome or which model to buy. Pending decisions must be resolved or excluded under an explicitly documented cutoff before a final run; arbitrary exclusion can bias the comparison. No telemetry or automatic uploads.
 
 Developed with AI assistance and synthetic CLI tests. No performed customer evaluation or independent review is claimed. Original utility code, documentation and fictional fixtures are [MIT licensed](LICENSE); this does not relicense the personal website or its other assets.
+
+## Software metadata and attribution
+
+[codemeta.json](codemeta.json) describes this repository and identifies Ahmadreza Samadi as its author, with the personal biography as an identity link. The metadata describes the repository without assigning a release version. For version-specific credit, use the CITATION.cff from the revision you actually used. This documentation addition does not create a new release or DOI.
