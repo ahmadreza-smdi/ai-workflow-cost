@@ -1,0 +1,4 @@
+result_id,attempt_id,outcome,model_cost,tool_cost,review_cost,other_cost
+A,1,accepted,1,0,5,0
+B,1,accepted,1.4,0,5,0
+C,1,error,1,0,5,0

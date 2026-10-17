@@ -68,6 +68,20 @@ python3 workflow_cost.py /path/to/private/attempt-ledger.csv --task "Your task a
 
 For comparisons, use a separate ledger per workflow with the same population, period, currency, acceptance rule and cost allocation. The notes help document choices; neither they nor the CLI certify a fair comparison, a correct result or complete cost recording. If you prefer a spreadsheet, use the workbook above and replace its fictional rows instead.
 
+## Compare two ledgers for the same recorded results
+
+The optional `compare_ledgers.py` companion runs the unchanged validator on two separate CSVs and requires exactly the same result IDs. It prints both summaries together, including every retry, total spend, accepted results and unit cost. It selects no winner. Educational, not financial advice. Python 3.10 or newer; no dependencies or network required.
+
+```sh
+python3 compare_ledgers.py examples/paired-ledgers/fictional-manual.csv examples/paired-ledgers/fictional-ai.csv --task "Fictional paired review" --criterion "Fictional evidence rule" --currency USD
+```
+
+These **fictional** ledgers give Manual 24 / 3 = 8.00 and AI 18.40 / 2 = 9.20 per accepted result. Lower total spend can accompany higher unit cost when fewer results are accepted. This mirrors the workbook's teaching arithmetic; it is not a workbook export, benchmark or company measurement.
+
+For private use, replace the two CSV paths and experiment labels; optionally set `--left-label` and `--right-label`. Inputs are read once each, then validated from temporary local snapshots, which are removed on exit. Input files stay unchanged; JSON goes to stdout and errors to stderr. The report includes input hashes, not file paths or result IDs. Task, criterion and workflow labels are included: keep those labels free of private details before sharing any report. Temporary storage and reports are ordinary local files, not encrypted storage or secure deletion.
+
+The caller must use the same actual task, period, population, acceptance rule, currency and cost allocation. Shared IDs alone do not establish those facts. Mismatched IDs or either invalid ledger cause exit 2 with no partial report. Unknown costs remain errors; no accepted results remains `null`, distinct from explicit zero unit cost. Pending is not a CLI outcome: reconcile the same documented cutoff for both workflows instead of silently dropping unmatched results. Keep private records and reports out of the public repository.
+
 ## Prepare your CLI ledger
 
 One row per attempt, in execution order within each result. Exact unique headers, in any order:
