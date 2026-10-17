@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img" aria-labelledby="title desc">
+<title id="title">Zero, undefined and unknown are different cost states</title>
+<desc id="desc">Three fictional cases for the AI workflow cost ledger. Explicit zero in every cost category and one caller-accepted result gives zero unit cost. Total cost of one currency unit with no accepted results gives undefined unit cost, while the total cost remains one. A missing required cost causes an input error, not a zero-cost result. Include all failed attempts and retries; acceptance and costs are supplied by the caller.</desc>
+<rect width="1000" height="760" rx="24" fill="#f1f8f4"/>
+<g font-family="Sora,Arial,sans-serif" fill="#193e45">
+<text x="42" y="48" font-size="16" letter-spacing="1.5">AHMADREZA SAMADI · START WITH THE DECISION</text>
+<text x="42" y="104" font-size="34" font-weight="600">Zero, undefined and unknown</text>
+<text x="42" y="145" font-size="34" font-weight="600">are different cost states.</text>
+<text x="42" y="183" font-size="19">Cost per caller-accepted AI result · Fictional teaching cases</text>
+<rect x="38" y="218" width="292" height="362" rx="16" fill="#dfeee7"/>
+<rect x="354" y="218" width="292" height="362" rx="16" fill="#e4eefb"/>
+<rect x="670" y="218" width="292" height="362" rx="16" fill="#dfeee7"/>
+<g font-size="23" font-weight="600">
+<text x="60" y="260">Known zero</text><text x="376" y="260">None accepted</text><text x="692" y="260">Missing cost</text>
+</g>
+<g font-size="18">
+<text x="60" y="305">Every required cost</text><text x="60" y="333">is explicitly zero.</text><text x="60" y="389">Accepted results: 1</text>
+<text x="376" y="305">Total recorded cost:</text><text x="376" y="333">1 currency unit</text><text x="376" y="389">Accepted results: 0</text>
+<text x="692" y="305">At least one required</text><text x="692" y="333">cost field is blank.</text><text x="692" y="389">No valid summary</text>
+</g>
+<g font-size="25" font-weight="600">
+<text x="60" y="450">0 ÷ 1 = 0</text><text x="376" y="450">1 ÷ 0: undefined</text><text x="692" y="450">Input error</text>
+</g>
+<g font-size="17">
+<text x="60" y="505">Zero unit cost is valid</text><text x="60" y="531">only for recorded costs.</text>
+<text x="376" y="505">Unit cost is null.</text><text x="376" y="531">Total spend is still 1.</text>
+<text x="692" y="505">Do not fill an unknown</text><text x="692" y="531">cost with zero.</text>
+</g>
+<text x="42" y="624" font-size="19">Total cost includes all attempts, failures and retries.</text>
+<text x="42" y="657" font-size="18">Divide by distinct accepted result IDs—not the number of attempts.</text>
+<text x="42" y="700" font-size="16">Costs and acceptance labels are caller-recorded, not independently verified.</text>
+<text x="42" y="727" font-size="16">One currency label; no currency conversion. AI-assisted educational diagram.</text>
+</g></svg>

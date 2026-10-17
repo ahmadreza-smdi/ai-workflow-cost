@@ -41,6 +41,12 @@ The three fictional cases distinguish failed/retried attempt costs, zero accepte
 
 These separate fixtures are arithmetic examples, not a controlled comparison of workflows, models or company performance. The package includes the unchanged CLI, three CSVs, expected summaries, the walkthrough, a replay script and MIT licence. Python 3.10 or newer; no dependencies, account or network required. v0.1.2 adds documentation and examples; the CLI and existing workbook are unchanged.
 
+## Zero, undefined and unknown
+
+![Three fictional cases: explicit zero costs with one accepted result give zero unit cost; one currency unit with no accepted results gives undefined unit cost; a missing required cost is an input error.](docs/cost-states.svg)
+
+The diagram separates the existing known-zero case, no-accepted-results case and missing-cost negative control. It does not compare real workflows or independently verify the caller’s costs or acceptance labels.
+
 ## Start with your own records
 
 Copy [the blank CSV header](templates/attempt-ledger.csv) to a private working folder and complete [the experiment notes](templates/experiment-notes.txt) before recording attempts. The CSV contains no sample rows or default costs. An empty file is intentionally rejected; it is not a zero-cost experiment.
