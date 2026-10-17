@@ -86,6 +86,12 @@ Prefer a download? [Get the offline paired-ledger kit](examples/AI-Cost-Paired-L
 
 Maintainers can rebuild this kit with `python3 -B examples/paired-ledgers/build_package.py`. Its seven allowlisted text files use UTF-8 and LF line endings. Tests compare logical file contents rather than requiring identical compression bytes across systems.
 
+### Six-card visual reading guide
+
+[Open the six-page visual guide](docs/ai-cost-reading-guide/AI-Cost-Per-Accepted-Result.pdf) or [read the text notes and source links](docs/ai-cost-reading-guide/reading-notes.txt). The fictional teaching comparison shows Manual 24 / 3 = 8.00 and AI 18.40 / 2 = 9.20 per accepted result. Read both total spend and accepted counts; a smaller total bill can have a higher unit cost. Educational, not financial advice. Prepared with AI assistance; no actual workflow experiment, company performance or ROI is claimed. These reading materials accompany the existing tool, rather than a new utility or tagged release.
+
+<img src="docs/ai-cost-reading-guide/cover.png" width="360" alt="Fictional teaching comparison titled A smaller bill. A higher unit cost. Manual total cost is 24.00 units, with 3 accepted results and 8.00 per accepted result. AI total cost is 18.40, with 2 accepted results and 9.20 per accepted result. Lower total cost does not by itself imply lower unit cost.">
+
 ## Prepare your CLI ledger
 
 One row per attempt, in execution order within each result. Exact unique headers, in any order:

@@ -1,0 +1,22 @@
+A smaller AI bill can still mean a higher cost per accepted result.
+
+In this fictional teaching example:
+Manual: 24 units / 3 accepted results = 8.00 each.
+AI: 18.40 units / 2 accepted results = 9.20 each.
+
+The two ledgers have the same three recorded result IDs. Those IDs do not establish a fair experiment or the quality of an answer. Define the actual task, population, period, currency, acceptance rule and cost allocation consistently before comparing.
+
+Count failed attempts, retries and review costs too. Unknown costs are input errors; no accepted results gives an undefined unit cost, rather than zero. Keep accepted-result counts beside the bill.
+
+The companion to my public AI workflow cost ledger puts both summaries together and selects no winner. A downloadable kit includes the walkthrough and fictional CSVs. Python 3.10 or newer is needed to run its commands.
+
+Method:
+https://a-samadi.com/writing/ai-cost-per-verified-result.html
+
+Source and offline kit:
+https://github.com/ahmadreza-smdi/ai-workflow-cost/tree/11d627b9ddb0d1d778373c9bb6537b74c9e1c467#compare-two-ledgers-for-the-same-recorded-results
+
+Start with the decision.
+Ahmadreza Samadi
+
+All values are fictional teaching data. Educational, not financial advice. Prepared with AI assistance. No actual workflow experiment, company results, quality improvement or ROI is claimed.
