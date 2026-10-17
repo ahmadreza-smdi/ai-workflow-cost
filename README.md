@@ -43,7 +43,10 @@ These separate fixtures are arithmetic examples, not a controlled comparison of 
 
 ## Zero, undefined and unknown
 
-![Three fictional cases: explicit zero costs with one accepted result give zero unit cost; one currency unit with no accepted results gives undefined unit cost; a missing required cost is an input error.](docs/cost-states.svg)
+<picture>
+  <source media="(max-width: 650px)" srcset="docs/cost-states-mobile.svg">
+  <img src="docs/cost-states.svg" alt="Three fictional cases: explicit zero costs with one accepted result give zero unit cost; one currency unit with no accepted results gives undefined unit cost; a missing required cost is an input error.">
+</picture>
 
 The diagram separates the existing known-zero case, no-accepted-results case and missing-cost negative control. It does not compare real workflows or independently verify the caller’s costs or acceptance labels.
 
