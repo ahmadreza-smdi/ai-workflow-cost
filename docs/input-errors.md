@@ -49,6 +49,18 @@ fictional-a,try-2,error,1,0,0,0
 
 It returns `Record 2: accepted result is terminal; no subsequent attempts allowed` and exits with code `2`.
 
+## The comparison has unmatched result IDs
+
+The optional `compare_ledgers.py` companion requires exactly the same recorded result IDs in its two separate CSVs. A left file containing only `fictional-a` and a right file containing only `fictional-b` fail with:
+
+```text
+Input error: Both ledgers must contain exactly the same result IDs; do not silently drop unmatched results
+```
+
+The command exits with code `2` and produces no partial JSON report. Check the source exports, spelling, missing records and intended population. Do not delete unmatched results to force agreement or invent a zero-cost attempt for a result that was never attempted. If the recorded populations truly differ, this helper cannot produce a same-ID comparison from those inputs.
+
+The two ledgers may record different outcomes for the same result ID. For example, one can record `fictional-a` as accepted and the other as error; that outcome difference alone is allowed. A valid ledger with no accepted results still has undefined unit cost (`null`), not zero. Matching IDs alone does not establish the same task, period, acceptance rule, cost allocation, quality or fairness. See the [paired-ledger example](../README.md#compare-two-ledgers-for-the-same-recorded-results).
+
 ## A valid summary has no accepted results
 
 This is different from an input error. A valid ledger containing rejected or error attempts can return exit code `0`, retain its recorded total cost and report `cost_per_accepted_result: null` with `undefined_reason: "No accepted results"`.

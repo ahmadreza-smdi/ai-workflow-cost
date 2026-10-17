@@ -15,7 +15,7 @@ python3 -B -m unittest discover -s tests -v
 
 The invented fixture has **3 attempts across 2 results, 1 accepted result and 0.85 total cost** in the selected currency label. The cost per accepted result is 0.85. These are teaching numbers, not Appraiva measurements, customer results or a model benchmark.
 
-If your own ledger is rejected, use the [input-error guide](docs/input-errors.md) to reconcile missing costs, duplicated attempts and attempts recorded after acceptance. A valid run with no accepted results is a separate condition; it is not a zero-cost result.
+If your own ledger is rejected, use the [input-error guide](docs/input-errors.md) to reconcile missing costs, duplicated attempts, attempts recorded after acceptance and unmatched result IDs in the optional comparison. A valid run with no accepted results is a separate condition; it is not a zero-cost result.
 
 ## Plan a manual-versus-AI experiment without Python
 
