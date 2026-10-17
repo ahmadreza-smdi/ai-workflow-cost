@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Compare two AI workflow cost ledgers — Ahmadreza Samadi</title>
+<style>
+body{font:18px/1.7 system-ui;background:#edf8f5;color:#16353b;max-width:860px;margin:35px auto;padding:20px}
+section{background:white;border-radius:16px;padding:22px;margin:22px 0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:12px;font-size:14px}
+a,code{overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:8px;border-bottom:1px solid #cadbd8}
+</style>
+<h1>Read the cost beside the accepted result</h1>
+<p>By <a href="https://a-samadi.com/about.html">Ahmadreza Samadi</a> · Start with the decision.</p>
+<p>This offline kit accompanies the existing AI workflow cost ledger. Every example is fictional and AI-assisted. Educational, not financial advice.</p>
+<section>
+<h2>1. Extract the entire ZIP</h2>
+<p>Keep the folders together. Open a terminal in the extracted folder containing <code>compare_ledgers.py</code>. Python 3.10 or newer must already be available; the kit needs no other packages, account, API key or network connection. Use <code>python</code> instead of <code>python3</code> where appropriate.</p>
+<pre>python3 -B compare_ledgers.py examples/paired-ledgers/fictional-manual.csv examples/paired-ledgers/fictional-ai.csv --task "Fictional paired review" --criterion "Fictional evidence rule" --currency USD</pre>
+<p>The command reads the two example files and prints a JSON report. It does not edit them or select a winner.</p>
+</section>
+<section>
+<h2>2. Keep both the numerator and denominator</h2>
+<table><caption>Fictional teaching arithmetic, in the selected currency units</caption><thead><tr><th scope="col">Measure</th><th scope="col">Manual</th><th scope="col">AI</th></tr></thead><tbody><tr><th scope="row">Total cost</th><td>24.00</td><td>18.40</td></tr><tr><th scope="row">Accepted results</th><td>3</td><td>2</td></tr><tr><th scope="row">Cost per accepted result</th><td>8.00</td><td>9.20</td></tr></tbody></table>
+<p>The AI batch has the lower total bill and the higher cost per accepted result. This is a separate fictional example, not a controlled experiment, company measurement, model benchmark or recommendation.</p>
+</section>
+<section>
+<h2>3. Run the included checks</h2>
+<pre>python3 -B -m unittest discover -s tests -v</pre>
+<p>The eight included checks exercise fictional paired inputs, retries, unmatched results, invalid costs, null versus zero, labels, file preservation, ordering and decimal amounts. Passing them does not verify a real result's quality or an experiment's fairness.</p>
+</section>
+<section>
+<h2>4. Use private copies for your own records</h2>
+<p>Use two separate CSVs with exactly the same recorded result IDs. Keep the task, population, period, acceptance rule, currency and cost allocation consistent. Matching IDs alone does not establish those facts. Keep all retries and failures. All four cost columns are mandatory: a blank is unknown, not zero. No accepted results gives undefined unit cost (<code>null</code>), separately from an explicitly known zero cost.</p>
+<p>Replace the example paths and quoted labels in the command. The currency argument is a label, not conversion or ISO validation. Private task and criterion labels appear in the report; keep private records and reports out of the public repository. The helper uses ordinary temporary local snapshots, which are removed on exit; it provides no encryption or secure deletion.</p>
+<p>Read the <a href="https://github.com/ahmadreza-smdi/ai-workflow-cost/tree/5eb52dc449cda3b3af6a14881a8801b31002fd94#prepare-your-cli-ledger">published CLI input contract</a> before preparing real data. The included licence covers this kit's original code, documentation and fictional examples. It does not license the personal website or other assets.</p>
+</section>
+</html>
