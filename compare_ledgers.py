@@ -15,7 +15,12 @@ def compare(left, right, task, criterion, currency, left_label='Manual', right_l
     labels = [left_label.strip(), right_label.strip()]
     if not all(labels) or labels[0].casefold() == labels[1].casefold():
         raise ValueError('Workflow labels must be nonempty and distinct')
-    paths = [Path(left).resolve(), Path(right).resolve()]
+    try:
+        paths = [Path(left).resolve(), Path(right).resolve()]
+    except RuntimeError as error:
+        # Python 3.10–3.12 raises RuntimeError for a symlink loop here.
+        # Keep the catch local: unrelated calculation errors must still surface.
+        raise ValueError('Cannot resolve ledger path: ' + str(error)) from error
     if paths[0] == paths[1]:
         raise ValueError('Use two separate ledger files')
     # Capture each input once: summaries and population checks use the same bytes.
