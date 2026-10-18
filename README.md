@@ -129,3 +129,11 @@ Developed with AI assistance and synthetic CLI tests. No performed customer eval
 ## Software metadata and attribution
 
 [codemeta.json](codemeta.json) describes this repository and identifies Ahmadreza Samadi as its author, with the personal biography as an identity link. The metadata describes the repository without assigning a release version. For version-specific credit, use the CITATION.cff from the revision you actually used. This documentation addition does not create a new release or DOI.
+
+## More public tools by [Ahmadreza Samadi](https://a-samadi.com/about.html)
+
+- **Read fixed metro rent-burden data:** [metro-rent-burden](https://github.com/ahmadreza-smdi/metro-rent-burden) looks up stored ACS 2024 rows. It does not provide current asking rents or an investment ranking.
+
+- **Inspect video publication dates:** [video-date-lint](https://github.com/ahmadreza-smdi/video-date-lint) checks dates and consistency in local video metadata. It does not certify actual publication, indexing or copyright clearance.
+
+Read each project's input rules and limits before use. Running one tool does not verify another tool's inputs or results.
