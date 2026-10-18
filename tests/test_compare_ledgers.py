@@ -90,6 +90,34 @@ class Comparison(unittest.TestCase):
             self.assertEqual(self.run_pair(extra=extra).returncode, 2)
         self.assertEqual(self.run_pair(same_path=True).returncode, 2)
 
+    def test_hardlinked_names_refused_without_partial_output(self):
+        with tempfile.TemporaryDirectory() as folder:
+            left = Path(folder) / 'manual.csv'
+            right = Path(folder) / 'ai.csv'
+            left.write_text(MANUAL, encoding='utf-8')
+            try:
+                right.hardlink_to(left)
+            except OSError as error:
+                self.skipTest('Filesystem cannot create this hard-link fixture: ' + str(error))
+            self.assertTrue(left.samefile(right))
+            before = left.read_bytes()
+            result = subprocess.run(
+                [sys.executable, '-B', str(ROOT/'compare_ledgers.py'), str(left), str(right),
+                 '--task', 'Fictional paired review', '--criterion', 'Fictional rule', '--currency', 'USD'],
+                capture_output=True, text=True)
+            self.assertEqual((result.returncode, result.stdout), (2, ''))
+            self.assertIn('two separate ledger files', result.stderr)
+            self.assertNotIn('Traceback', result.stderr)
+            self.assertEqual(left.read_bytes(), before)
+            self.assertEqual(right.read_bytes(), before)
+
+    def test_equal_bytes_in_separate_files_still_allowed(self):
+        result = self.run_pair(MANUAL, MANUAL)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        report = json.loads(result.stdout)
+        self.assertEqual(report['workflows'][0]['input_sha256'], report['workflows'][1]['input_sha256'])
+        self.assertEqual(len(report['workflows']), 2)
+
     def test_bom_and_different_result_order(self):
         right = '\ufeff' + HEADER + '\n'.join(reversed(AI.splitlines()[1:])) + '\n'
         self.assertEqual(self.run_pair(right=right).returncode, 0)

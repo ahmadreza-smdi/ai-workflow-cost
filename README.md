@@ -17,6 +17,8 @@ The invented fixture has **3 attempts across 2 results, 1 accepted result and 0.
 
 If your own ledger is rejected, use the [input-error guide](docs/input-errors.md) to reconcile missing costs, duplicated attempts, attempts recorded after acceptance and unmatched result IDs in the optional comparison. A valid run with no accepted results is a separate condition; it is not a zero-cost result.
 
+For a repository test that reports different bytes in an extracted example and its source, use the [download-comparison guide](docs/download-integrity.md). It separates an archive/source mismatch from a rejected ledger or a failed accounting calculation.
+
 ## Plan a manual-versus-AI experiment without Python
 
 [Download the AI workflow experiment workbook](https://github.com/ahmadreza-smdi/ai-workflow-cost/releases/download/v0.1.1/AI-Workflow-Experiment.xlsx) or open its [versioned source file](examples/AI-Workflow-Experiment.xlsx).
@@ -86,7 +88,7 @@ For private use, replace the two CSV paths and experiment labels; optionally set
 
 The caller must use the same actual task, period, population, acceptance rule, currency and cost allocation. Shared IDs alone do not establish those facts. Mismatched IDs or either invalid ledger cause exit 2 with no partial report. Unknown costs remain errors; no accepted results remains `null`, distinct from explicit zero unit cost. Pending is not a CLI outcome: reconcile the same documented cutoff for both workflows instead of silently dropping unmatched results. Keep private records and reports out of the public repository.
 
-Prefer a download? [Get the offline paired-ledger kit](examples/AI-Cost-Paired-Ledgers.zip), extract the entire ZIP and open `index.html`. It contains the two existing CLIs, two fictional CSVs, 11 comparison checks and the MIT licence. Python 3.10 or newer must already be available. This is a main-branch companion, separate from the v0.1.2 worked-example ZIP; it is not a new tagged release.
+Prefer a download? [Get the offline paired-ledger kit](examples/AI-Cost-Paired-Ledgers.zip), extract the entire ZIP and open `index.html`. It contains the two existing CLIs, two fictional CSVs, 13 comparison checks and the MIT licence. Python 3.10 or newer must already be available. This is a main-branch companion, separate from the v0.1.2 worked-example ZIP; it is not a new tagged release.
 
 Maintainers can rebuild this kit with `python3 -B examples/paired-ledgers/build_package.py`. Its seven allowlisted text files use UTF-8 and LF line endings. Tests compare logical file contents rather than requiring identical compression bytes across systems.
 
@@ -127,3 +129,11 @@ Developed with AI assistance and synthetic CLI tests. No performed customer eval
 ## Software metadata and attribution
 
 [codemeta.json](codemeta.json) describes this repository and identifies Ahmadreza Samadi as its author, with the personal biography as an identity link. The metadata describes the repository without assigning a release version. For version-specific credit, use the CITATION.cff from the revision you actually used. This documentation addition does not create a new release or DOI.
+
+## More public tools by [Ahmadreza Samadi](https://a-samadi.com/about.html)
+
+- **Read fixed metro rent-burden data:** [metro-rent-burden](https://github.com/ahmadreza-smdi/metro-rent-burden) looks up stored ACS 2024 rows. It does not provide current asking rents or an investment ranking.
+
+- **Inspect video publication dates:** [video-date-lint](https://github.com/ahmadreza-smdi/video-date-lint) checks dates and consistency in local video metadata. It does not certify actual publication, indexing or copyright clearance.
+
+Read each project's input rules and limits before use. Running one tool does not verify another tool's inputs or results.
