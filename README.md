@@ -58,6 +58,8 @@ The diagram separates the existing known-zero case, no-accepted-results case and
 
 Copy [the blank CSV header](templates/attempt-ledger.csv) to a private working folder and complete [the experiment notes](templates/experiment-notes.txt) before recording attempts. The CSV contains no sample rows or default costs. An empty file is intentionally rejected; it is not a zero-cost experiment.
 
+Define the intended user, destination, supported action and acceptance evidence with neutral labels in your private notes. If your criterion requires successful use at that destination, generation or delivery alone does not meet it. Include checking and rework attempts and their costs under the same result ID before marking it accepted; an accepted attempt closes that result. These prompts help you state your rule. Neither the notes nor the CLI verify destination use or the evidence behind your acceptance label.
+
 Add one row for every attempt using the field rules below. Keep the same result ID across retries, record all known cost categories and enter zero only when it is known to be zero. Resolve unknown costs and pending decisions under your documented cutoff before a final run. Do not overwrite the fictional fixtures or commit private records to this repository.
 
 Run from this repository folder after filling the CSV. Replace both quoted labels and the currency label with your own experiment definitions:

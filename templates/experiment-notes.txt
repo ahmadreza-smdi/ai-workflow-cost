@@ -6,13 +6,22 @@ or confidential descriptions. Original blank template: repository MIT licence.
 
 DEFINE BEFORE RECORDING
 Task and decision this experiment will inform:
+Intended user/role and destination (neutral labels only; no private system details):
+Action the result must support there:
 Workflow name (use a separate CSV for each workflow):
 Batch / population and inclusion rule:
 Period and observation cutoff:
 Currency label (one label per run; no conversion is performed):
 Acceptance criterion (what evidence makes a result acceptable?):
 How acceptance will be checked, consistently across workflows:
+Who records acceptance and at what point in the workflow:
+Checks and rework included before final acceptance:
 How pending outcomes will be resolved or excluded at the cutoff:
+
+If your criterion requires successful use at the destination, define the evidence
+needed there. Generating or delivering a file does not by itself meet that rule.
+Record checking and rework attempts and costs before the accepted attempt, using
+the same result ID. The CLI cannot verify destination use or acceptance evidence.
 
 DOCUMENT COST ALLOCATION
 Model costs — source and allocation basis:
