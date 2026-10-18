@@ -17,6 +17,8 @@ The invented fixture has **3 attempts across 2 results, 1 accepted result and 0.
 
 If your own ledger is rejected, use the [input-error guide](docs/input-errors.md) to reconcile missing costs, duplicated attempts, attempts recorded after acceptance and unmatched result IDs in the optional comparison. A valid run with no accepted results is a separate condition; it is not a zero-cost result.
 
+For a repository test that reports different bytes in an extracted example and its source, use the [download-comparison guide](docs/download-integrity.md). It separates an archive/source mismatch from a rejected ledger or a failed accounting calculation.
+
 ## Plan a manual-versus-AI experiment without Python
 
 [Download the AI workflow experiment workbook](https://github.com/ahmadreza-smdi/ai-workflow-cost/releases/download/v0.1.1/AI-Workflow-Experiment.xlsx) or open its [versioned source file](examples/AI-Workflow-Experiment.xlsx).
