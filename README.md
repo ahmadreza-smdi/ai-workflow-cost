@@ -60,6 +60,8 @@ Copy [the blank CSV header](templates/attempt-ledger.csv) to a private working f
 
 Define the intended user, destination, supported action and acceptance evidence with neutral labels in your private notes. If your criterion requires successful use at that destination, generation or delivery alone does not meet it. Include checking and rework attempts and their costs under the same result ID before marking it accepted; an accepted attempt closes that result. These prompts help you state your rule. Neither the notes nor the CLI verify destination use or the evidence behind your acceptance label.
 
+Read the [filled fictional notes](examples/fictional-experiment-notes.txt) beside the original three-attempt CSV to see how those prompts can be completed. The supplied outcomes and 0.85 total cost are teaching inputs; no reviewer assessment, output check or destination test is supplied.
+
 Add one row for every attempt using the field rules below. Keep the same result ID across retries, record all known cost categories and enter zero only when it is known to be zero. Resolve unknown costs and pending decisions under your documented cutoff before a final run. Do not overwrite the fictional fixtures or commit private records to this repository.
 
 Run from this repository folder after filling the CSV. Replace both quoted labels and the currency label with your own experiment definitions:

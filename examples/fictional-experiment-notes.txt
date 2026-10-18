@@ -1,0 +1,127 @@
+AI WORKFLOW EXPERIMENT NOTES — FICTIONAL FILLED EXAMPLE
+Ahmadreza Samadi | https://a-samadi.com/about.html
+
+This companion fills the existing blank notes for the original three-attempt
+fixture, examples/fictional-attempts.csv. It introduces no new data or tool.
+Every workflow detail and cost is illustrative. Outcomes come from the fixture;
+no deliverable, real reviewer or target system was evaluated. Do not use these
+filled notes as evidence of an actual experiment or copy their values into one.
+
+DEFINE BEFORE RECORDING
+Task and decision this experiment will inform:
+  Fictional property-record review. Illustrate a decision about whether a mock
+  record has sufficient identity and dated-source information for a later
+  manual check. No property value or real person is assessed.
+Intended user/role and destination (neutral labels only; no private system details):
+  Fictional review coordinator; fictional offline review worksheet. No
+  worksheet or actual output is supplied with this example, and no destination
+  was tested.
+Action the result must support there:
+  Illustratively, record the result ID, supporting source date and caveat, or
+  flag missing evidence for manual follow-up. This is a proposed workflow, not
+  an observed use.
+Workflow name (use a separate CSV for each workflow):
+  Synthetic teaching fixture only. No manual-versus-AI experiment is performed
+  here.
+Batch / population and inclusion rule:
+  Exactly the two predefined result IDs A and B in examples/fictional-
+  attempts.csv, including every recorded attempt. Do not restrict the batch to
+  the accepted result.
+Period and observation cutoff:
+  One fictional closed batch; use the recorded per-result row order. No
+  calendar dates, actual duration or elapsed-time measurements are claimed.
+Currency label (one label per run; no conversion is performed):
+  USD, matching the README demo label. All amounts are invented; the label
+  does not establish payments, market prices or exchange conversion.
+Acceptance criterion (what evidence makes a result acceptable?):
+  The README demo calls this: Fictional reviewer accepts supported identity
+  and dated evidence. This example illustrates how a real protocol might
+  additionally require usable fields at its destination. The fixture outcomes
+  are supplied labels, not proof that either rule was met.
+How acceptance will be checked, consistently across workflows:
+  For an actual experiment, specify the same checks for each workflow before
+  running it. Here there are no output records or evidence packets to inspect,
+  so quality and destination usability are unknown.
+Who records acceptance and at what point in the workflow:
+  A hypothetical reviewer would record the decision after the defined checks
+  and before closing the result. No human acceptance review occurred in this
+  synthetic example.
+Checks and rework included before final acceptance:
+  Result A has rejected attempt 1 then accepted attempt 2; result B has error
+  attempt 1. All three rows count toward cost. A checker cannot infer what
+  review or rework actually happened from those labels alone.
+How pending outcomes will be resolved or excluded at the cutoff:
+  This fixture has no pending label. For actual records, document the cutoff
+  rule in advance; do not silently relabel unresolved results as accepted or
+  invent zero-cost outcomes.
+
+If your criterion requires successful use at the destination, define the evidence
+needed there. Generating or delivering a file does not by itself meet that rule.
+Record checking and rework attempts and costs before the accepted attempt, using
+the same result ID. The CLI cannot verify destination use or acceptance evidence.
+
+DOCUMENT COST ALLOCATION
+Model costs — source and allocation basis:
+  Invented inputs: A1=0.04, A2=0.03, B1=0.02; total 0.09 USD. No provider
+  invoice or model-usage measurement exists.
+Tool costs — source and allocation basis:
+  Invented inputs: A1=0.01, A2=0, B1=0; total 0.01 USD. These are explicit
+  synthetic zeros, not omitted costs.
+Review costs — measured time, stated rate and time unit:
+  Invented allocations: A1=0.50, A2=0.25, B1=0; total 0.75 USD. Minutes and
+  hourly rates are not supplied, so no measured effort or wage can be
+  inferred.
+Other costs — included categories and allocation basis:
+  Explicit synthetic zero for every row. Not a claim that actual equipment,
+  integration or other work would be free.
+How shared charges are allocated without double counting:
+  No shared charge is represented. The four supplied categories are added once
+  per row; no cost is counted again in another category.
+Known excluded costs and reason:
+  Actual deployment, integration, taxes, infrastructure and labor outside the
+  invented inputs are not measured. This fixture cannot establish a complete
+  real-world cost.
+Unknown costs / unresolved inputs (resolve before final calculation):
+  All required numeric cells are supplied for this fictional arithmetic.
+  Actual costs, output correctness and destination-use evidence are
+  unavailable; do not treat them as known zero.
+
+RECORD AND RUN
+1. Copy attempt-ledger.csv to your working folder. It has a header only.
+2. Add one row per actual attempt. Use a stable result_id for retries and a unique
+   attempt_id within each result. Keep execution order within each result.
+3. outcome must be accepted, rejected or error. An accepted attempt closes that
+   result; do not add later attempts for it. Pending is not a CLI outcome.
+4. Fill all four cost columns with nonnegative plain decimal amounts. Explicit
+   zero means known zero. A blank cost means unknown and is rejected.
+5. Include rejected and error attempts, not only accepted ones. Read the full
+   README field limits before importing data. Do not copy fictional sample rows
+   into a real experiment.
+6. Run the README command on your private file. The CLI totals caller-recorded
+   costs and labels; it does not check the truth of the acceptance judgement.
+
+INTERPRET TOGETHER
+Attempts recorded:
+  3 attempts, from the unchanged supplied fixture.
+Distinct results attempted:
+  2 result IDs: A and B.
+Accepted results:
+  1 caller-labelled accepted result: A. The accepted label is not
+  independently verified.
+Total recorded cost and currency label:
+  0.85 USD: model 0.09 + tool 0.01 + review 0.75 + other 0.00.
+Cost per accepted result (undefined when none is accepted):
+  0.85 USD per caller-labelled accepted result: 0.85 / 1. This is arithmetic,
+  not a measured productivity result.
+Quality checks, omissions and uncertainty beside the cost figure:
+  No underlying outputs, reference packets, actual reviewers or tested
+  destination are included. Accuracy, suitability, fairness, time saved and
+  business performance remain unknown.
+Decision taken, if any, and limitations:
+  No real workflow or model is selected. Use the example to learn the
+  accounting contract; define and document your own acceptance evidence before
+  a real experiment.
+
+A lower total bill alone does not establish better quality, ROI or a better model.
+This template is educational. It contains no company or customer measurements.
+Developed with AI assistance. No automatic uploads or external connections.
