@@ -1,5 +1,7 @@
 # AI workflow cost ledger
 
+For teams recording AI attempts, review effort and cost under an explicit acceptance rule.
+
 An offline, dependency-free Python CLI by [Ahmadreza Samadi](https://a-samadi.com/about.html), accompanying [AI cost per verified result](https://a-samadi.com/writing/ai-cost-per-verified-result.html).
 
 Count what the whole attempt costs, then divide by distinct results accepted under a stated criterion. Retries and failed attempts still cost money. This utility totals your ledger; it does not decide whether a result is correct.
@@ -137,3 +139,7 @@ Developed with AI assistance and synthetic CLI tests. No performed customer eval
 - **Inspect video publication dates:** [video-date-lint](https://github.com/ahmadreza-smdi/video-date-lint) checks dates and consistency in local video metadata. It does not certify actual publication, indexing or copyright clearance.
 
 Read each project's input rules and limits before use. Running one tool does not verify another tool's inputs or results.
+
+## How to cite
+
+By [Ahmadreza Samadi](https://a-samadi.com/about.html). Cite the specific release or exact commit used: Samadi, Ahmadreza. “AI workflow cost ledger.” GitHub, `ahmadreza-smdi/ai-workflow-cost`, version/commit, accessed YYYY-MM-DD. Use the repository’s `CITATION.cff` where applicable. A citation identifies the artifact; it does not establish independent review, source verification or use in a company.
